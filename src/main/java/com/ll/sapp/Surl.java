@@ -1,5 +1,6 @@
 package com.ll.sapp;
 
+import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,4 +21,12 @@ public class Surl {
 
     private String body;
     private String url;
+
+    @Setter(AccessLevel.NONE)
+    private long count;
+
+    public void increaseCount() {
+        count++;
+    }
+
 }
