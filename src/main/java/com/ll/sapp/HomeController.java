@@ -11,6 +11,9 @@ public class HomeController {
     @Value("${custom.site.name}")
     private String siteName;
 
+    @Value("${custom.secret.key")
+    private String secretKey;
+
     @GetMapping("/")
     @ResponseBody
     public String showMain() {
