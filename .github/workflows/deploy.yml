@@ -6,7 +6,7 @@ on:
       - build.gradle
       - src/**
       - fly.toml
-      - Dockerfile
+      - dockerfile
       - .github/workflows/deploy.yml
     branches:
       - main
