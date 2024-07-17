@@ -1,0 +1,6 @@
+server:
+  port: 8070
+
+custom:
+  site:
+    name: MySite-dev
