@@ -22,6 +22,21 @@ public class SurlController {
         return surls;
     }
 
+    @GetMapping("/add")
+    @ResponseBody
+    public Surl add_1(String body, String url) {
+
+        Surl surl = Surl.builder()
+                .id(++surlsLastId)
+                .body(body)
+                .url(url)
+                .build();
+
+        surls.add(surl);
+
+        return surl;
+    }
+
     @GetMapping("/s/{body}/**")
     @ResponseBody
     public Surl add(@PathVariable String body, HttpServletRequest request) {
@@ -59,7 +74,7 @@ public class SurlController {
 
         surl.increaseCount();
 
-        return "redirect:" + surl.getUrl();
+        return "redirect: " + surl.getUrl();
     }
 
 }
