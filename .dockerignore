@@ -47,4 +47,3 @@ nbdist
 .idea\dataSources
 .idea\dataSources.local.xml
 fly.toml
-dockerfile
