@@ -1,35 +1,26 @@
 package com.ll.sapp.domain.article.article.entity;
 
-import jakarta.persistence.*;
+import com.ll.sapp.domain.member.member.entity.Member;
+import com.ll.sapp.global.jpa.entity.BaseTime;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToOne;
 import lombok.*;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
-import java.time.LocalDateTime;
 
 @Entity
 @Builder
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@EntityListeners(AuditingEntityListener.class)
-public class Article {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @CreatedDate
-    private LocalDateTime createdTime;
-
-    @LastModifiedDate
-    private LocalDateTime modifyDate;
+@AllArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+public class Article extends BaseTime {
 
     @Column
     private String title;
 
     @Column(columnDefinition = "TEXT")
     private String body;
+
+    @ManyToOne
+    private Member author;
 }

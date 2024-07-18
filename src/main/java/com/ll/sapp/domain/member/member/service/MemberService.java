@@ -6,15 +6,18 @@ import com.ll.sapp.global.exceptions.GlobalException;
 import com.ll.sapp.global.rsData.RsData;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
+@Transactional(readOnly = true)
 public class MemberService {
 
     private final MemberRepository memberRepository;
 
+    @Transactional
     public RsData<Member> join(String username, String password, String nickname) {
 
         findByUsername(username).ifPresent(ignored -> {
