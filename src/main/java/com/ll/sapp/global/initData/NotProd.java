@@ -2,6 +2,9 @@ package com.ll.sapp.global.initData;
 
 import com.ll.sapp.domain.article.article.entity.Article;
 import com.ll.sapp.domain.article.article.service.ArticleService;
+import com.ll.sapp.domain.member.member.entity.Member;
+import com.ll.sapp.domain.member.member.service.MemberService;
+import com.ll.sapp.global.rsData.RsData;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationRunner;
@@ -22,6 +25,7 @@ public class NotProd {
     @Autowired
     private NotProd self;
     private ArticleService articleService;
+    private MemberService memberService;
 
     @Bean
     public ApplicationRunner initNotProd() {
@@ -35,8 +39,16 @@ public class NotProd {
     public void work1() {
         if(articleService.count() > 0) return;
 
-        Article article1 = articleService.write("제목 1", "내용 1");
-        Article article2 = articleService.write("제목 2", "내용 2");
+        Member member1 = memberService.join("user1", "1234", "유저 1").getData();
+        Member member2 = memberService.join("user2", "1234", "유저 2").getData();
+
+        RsData<Member> joinRs = memberService.join("user2", "1234", "유저 2");
+
+        System.out.println("joinRs.getMsg()" + joinRs.getMsg());
+        System.out.println("joinRs.getStatusCode() : " + joinRs.getStatusCode());
+
+        Article article1 = articleService.write("제목 1", "내용 1").getData();
+        Article article2 = articleService.write("제목 2", "내용 2").getData();
 
         article2.setTitle("제목 !!");
 
