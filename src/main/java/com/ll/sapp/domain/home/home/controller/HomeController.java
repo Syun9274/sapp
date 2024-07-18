@@ -1,4 +1,4 @@
-package com.ll.sapp;
+package com.ll.sapp.domain.home.home.controller;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;

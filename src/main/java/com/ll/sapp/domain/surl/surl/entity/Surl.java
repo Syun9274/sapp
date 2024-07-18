@@ -1,4 +1,4 @@
-package com.ll.sapp;
+package com.ll.sapp.domain.surl.surl.entity;
 
 import lombok.AccessLevel;
 import lombok.Builder;

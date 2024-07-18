@@ -1,6 +1,11 @@
 server:
   port: 8070
 
+spring:
+  output:
+    ansi:
+      enabled: ALWAYS
+
 custom:
   site:
     name: MySite-dev
