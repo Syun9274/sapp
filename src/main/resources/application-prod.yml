@@ -1,6 +1,29 @@
 server:
   port: 8090
 
+spring:
+  datasource:
+    url: jdbc:postgresql://syun9274-db.internal:5432/surl-prod
+    username: postgres
+    password: mt24T8B0-----Eg
+    driver-class-name: org.h2.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: false
+        highlight_sql: false
+        use_sql_comments: false
+
+logging:
+  level:
+    com.ll.sapp: INFO
+    org.hibernate.SQL: INFO
+    org.hibernate.orm.jdbc.bind: INFO
+    org.hibernate.orm.jdbc.extract: INFO
+    org.springframework.transaction.interceptor: INFO
+
 custom:
   site:
-    name: MySite-prod
+    name: "MySite-prod"
