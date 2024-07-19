@@ -23,7 +23,9 @@ public class NotProd {
     @Lazy
     @Autowired
     private NotProd self;
+    @Autowired
     private ArticleService articleService;
+    @Autowired
     private MemberService memberService;
 
     @Bean
@@ -45,8 +47,6 @@ public class NotProd {
         Article article2 = articleService.write(member1,"제목 2", "내용 2").getData();
         Article article3 = articleService.write(member2,"제목 3", "내용 3").getData();
         Article article4 = articleService.write(member2,"제목 4", "내용 4").getData();
-
-
     }
 
     @Transactional
