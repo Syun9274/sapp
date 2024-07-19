@@ -1,5 +1,6 @@
 package com.ll.sapp.domain.surl.surl.service;
 
+import com.ll.sapp.domain.member.member.entity.Member;
 import com.ll.sapp.domain.surl.surl.entity.Surl;
 import com.ll.sapp.domain.surl.surl.repository.SurlRepository;
 import com.ll.sapp.global.rsData.RsData;
@@ -21,8 +22,9 @@ public class SurlService {
     }
 
     @Transactional
-    public RsData<Surl> add(String body, String url) {
+    public RsData<Surl> add(Member author, String body, String url) {
         Surl surl = Surl.builder()
+                .author(author)
                 .body(body)
                 .url(url)
                 .build();

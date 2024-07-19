@@ -38,4 +38,8 @@ public class MemberService {
     private Optional<Member> findByUsername(String username) {
         return memberRepository.findByUsername(username);
     }
+
+    public Member getReferenceById(long id) {
+        return memberRepository.getReferenceById(id);
+    }
 }

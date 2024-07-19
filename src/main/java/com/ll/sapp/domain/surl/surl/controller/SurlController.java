@@ -1,8 +1,10 @@
 package com.ll.sapp.domain.surl.surl.controller;
 
+import com.ll.sapp.domain.member.member.entity.Member;
 import com.ll.sapp.domain.surl.surl.entity.Surl;
 import com.ll.sapp.domain.surl.surl.service.SurlService;
 import com.ll.sapp.global.exceptions.GlobalException;
+import com.ll.sapp.global.rq.Rq;
 import com.ll.sapp.global.rsData.RsData;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +20,7 @@ import java.util.List;
 public class SurlController {
 
     private final SurlService surlService;
+    private final Rq rq;
 
     @GetMapping("/all")
     @ResponseBody
@@ -28,13 +31,25 @@ public class SurlController {
     @GetMapping("/add")
     @ResponseBody
     public RsData<Surl> add(String body, String url) {
-        return surlService.add(body, url);
+        Member member = rq.getMember();
+
+        System.out.println("before get Id");
+        member.getId();
+        System.out.println("after get Id");
+
+        System.out.println("before get username");
+        member.getUsername();
+        System.out.println("after get username");
+
+        return surlService.add(member, body, url);
     }
 
     @GetMapping("/s/{body}/**")
     @ResponseBody
     public RsData<Surl> add(@PathVariable String body, HttpServletRequest request) {
         String url = request.getRequestURI();
+
+        Member member = rq.getMember();
 
         if(request.getQueryString() != null) {
             url += '?' + request.getQueryString();
@@ -44,7 +59,7 @@ public class SurlController {
 
         url = urlBits[3];
 
-        return surlService.add(body, url);
+        return surlService.add(member, body, url);
     }
 
     @GetMapping("/g/{id}")
